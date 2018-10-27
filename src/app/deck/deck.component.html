@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let card of deck">
+    {{ card.value }}
+    {{ card.suit }}
+    <h1 *ngIf="card.isSeleCted">I am selected</h1>
+  </li>
+</ul>
