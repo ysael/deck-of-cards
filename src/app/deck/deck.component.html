@@ -1,4 +1,5 @@
 <mat-grid-list class="deck" rowHeight="200px" [cols]="breakpoint" (window:resize)="onResize($event)">
+  // TODO: Make this a component
   <mat-grid-tile *ngFor="let card of deck" class="card {{'card-'+ card.suit}}" [ngClass]="{'card-selected': card.isSeleCted}">
     {{cards[card.suit][card.value]}}
   </mat-grid-tile>
