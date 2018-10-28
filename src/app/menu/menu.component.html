@@ -1,4 +1,12 @@
-<p>
-  <a (click)="shuffle()" href="#">Shuffle</a>
-  <a (click)="selectACard()" href="#">Pick</a>
-</p>
+<mat-toolbar class='menu'>
+  <span>Deck of cards</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill"></span>
+
+  <span>
+    <button (click)="shuffle()" mat-button>Shuffle deck </button>
+    <button (click)="selectACard()" mat-button>Pick a card </button>
+  </span>
+
+</mat-toolbar>

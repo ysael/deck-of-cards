@@ -1,7 +1,5 @@
-<ul>
-  <li *ngFor="let card of deck">
-    {{ card.value }}
-    {{ card.suit }}
-    <h1 *ngIf="card.isSeleCted">I am selected</h1>
-  </li>
-</ul>
+<mat-grid-list class="deck" rowHeight="200px" [cols]="breakpoint" (window:resize)="onResize($event)">
+  <mat-grid-tile *ngFor="let card of deck" class="card {{'card-'+ card.suit}}" [ngClass]="{'card-selected': card.isSeleCted}">
+    {{cards[card.suit][card.value]}}
+  </mat-grid-tile>
+</mat-grid-list>

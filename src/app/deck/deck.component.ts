@@ -1,6 +1,8 @@
 import { DeckOfCardsService, Deck } from './../deck-of-cards-service';
 import { Component, OnInit } from '@angular/core';
+import { CardsSymbols } from './cards-symbols';
 
+const setColSize = innerWidth => (window.innerWidth <= 1000) ? 4 : 6
 @Component({
   selector: 'app-deck',
   templateUrl: './deck.component.html',
@@ -8,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeckComponent implements OnInit {
   deck: Deck;
-  constructor(private deckOfCardsService: DeckOfCardsService) {}
+  cards = CardsSymbols;
+  breakpoint: number;
+  constructor(private deckOfCardsService: DeckOfCardsService) {
+
+  }
 
   ngOnInit() {
+    this.breakpoint = setColSize(window.innerWidth);
     this.deck = this.deckOfCardsService.deck;
   }
+
+  onResize(event) {
+    this.breakpoint = setColSize(event.target.innerWidth);
+  }
 }
+
+
+

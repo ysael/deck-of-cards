@@ -13,9 +13,9 @@ export type Deck = Card[];
 type Suits = string[];
 type Values = string[];
 
-const numbers = ['2', '3', '4', '5', '6', '7', '8', '9', '10'];
-const initialSuits: Suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
-const InitialValues = ['Ace', ...numbers, 'Jack', 'Queen', 'King'];
+const numbers = ['two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const initialSuits: Suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+const InitialValues = ['ace', ...numbers, 'jack', 'queen', 'king'];
 
 const makeACard = (value: string, suit: string): Card => ({ value, suit, isSeleCted: false });
 const makeASuit = (values: Values, suit: string) => values.map(value => makeACard(value, suit));
