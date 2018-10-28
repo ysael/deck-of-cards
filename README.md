@@ -2,10 +2,12 @@
 
 ![img](https://raw.githubusercontent.com/ysael/deck-of-cards/master/deckScreenShot.png)
 
+[View project](https://ysael.github.io/deck-of-cards/)
+
 ## Todos
 
 - [ ] Add unit tests
-- [ ] Make the deck immutable
+- [x] Make the deck immutable
 - [ ] Scroll to selected card
 - [ ] Fix symbols on mobile
 
