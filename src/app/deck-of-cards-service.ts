@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import produce from "immer"
-
-// Move to deck of card service
-
 interface Card {
   value: string;
   suit: string;
