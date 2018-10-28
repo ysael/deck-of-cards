@@ -22,15 +22,11 @@ const deckReducer = (values: Values) => (d, suit) => [...d, ...makeASuit(values,
 const createDeck = (suits: Suits, values: Values): Deck => suits.reduce(deckReducer(values), []);
 
 
-const shuffle = (a: any[]): any[] => {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
+const shuffleDeck = d => d
+  .map(a => [Math.random(), a])
+  .sort((a, b) => a[0] - b[0])
+  .map(a => a[1]);
 
-const shuffleDeck = d => shuffle([...d]);
 const randomCardIndex = d => Math.floor(Math.random() * d.length);
 @Injectable({
   providedIn: 'root'
