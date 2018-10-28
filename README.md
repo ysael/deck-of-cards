@@ -7,6 +7,7 @@
 - [ ] Add unit tests
 - [ ] Make the deck immutable
 - [ ] Scroll to selected card
+- [ ] Fix symbols on mobile
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
