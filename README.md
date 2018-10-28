@@ -1,9 +1,10 @@
-# DeckOfCards
+# Deck of cards
+
 ![img](https://raw.githubusercontent.com/ysael/deck-of-cards/master/deckScreenShot.png)
 
-### Todos
+## Todos
 
-- [ ] Add unit test
+- [ ] Add unit tests
 - [ ] Make the deck immutable
 - [ ] Scroll to selected card
 
