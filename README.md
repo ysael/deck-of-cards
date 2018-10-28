@@ -1,6 +1,17 @@
 # DeckOfCards
+![img](https://raw.githubusercontent.com/ysael/deck-of-cards/master/deckScreenShot.png)
+
+### Todos
+
+- [ ] Add unit test
+- [ ] Make the deck immutable
+- [ ] Scroll to selected card
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+
+After installing Angular CLI,
+
+RUN `npm install`
 
 ## Development server
 
