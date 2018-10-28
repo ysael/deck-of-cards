@@ -12,13 +12,11 @@ export class DeckComponent implements OnInit {
   deck: Deck;
   cards = CardsSymbols;
   breakpoint: number;
-  constructor(private deckOfCardsService: DeckOfCardsService) {
-
-  }
+  constructor(private deckOfCardsService: DeckOfCardsService) { }
 
   ngOnInit() {
     this.breakpoint = setColSize(window.innerWidth);
-    this.deck = this.deckOfCardsService.deck;
+    this.deckOfCardsService.getDeck().subscribe(d => this.deck = d);
   }
 
   onResize(event) {

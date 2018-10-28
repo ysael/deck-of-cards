@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import produce from "immer"
 
 // Move to deck of card service
 
@@ -22,8 +24,7 @@ const makeASuit = (values: Values, suit: string) => values.map(value => makeACar
 const deckReducer = (values: Values) => (d, suit) => [...d, ...makeASuit(values, suit)];
 const createDeck = (suits: Suits, values: Values): Deck => suits.reduce(deckReducer(values), []);
 
-// This is mutating the array, with more time I would have created a non mutating version
-// of this service leveraging observables...for now moving to the visual part of the app ;)
+
 const shuffle = (a: any[]): any[] => {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -32,39 +33,38 @@ const shuffle = (a: any[]): any[] => {
   return a;
 };
 
-const shuffleDeck = d => shuffle(d);
+const shuffleDeck = d => shuffle([...d]);
 const randomCardIndex = d => Math.floor(Math.random() * d.length);
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class DeckOfCardsService {
   deck: Deck;
+
+  private deckSource = new BehaviorSubject<Deck>(createDeck(initialSuits, InitialValues));
+  decks = this.deckSource.asObservable();
   selectedCardIndex: number;
 
   constructor() {
-    this.creacteDeck();
     this.selectedCardIndex = null;
+    this.decks.subscribe(d => this.deck = d);
   }
 
-  creacteDeck() {
-    this.deck = createDeck(initialSuits, InitialValues);
+  getDeck() {
+    return this.decks;
   }
 
   suffle() {
-    this.resetSelectedCard();
-    this.deck = shuffleDeck(this.deck);
+    this.deckSource.next(shuffleDeck(this.deck));
   }
 
-  private resetSelectedCard() {
-    // If a card is selected, unselect it;
-    if (this.deck[this.selectedCardIndex]) {
-      this.deck[this.selectedCardIndex].isSeleCted = false;
-    }
-  }
   selectACard() {
-    this.resetSelectedCard();
-    this.selectedCardIndex = randomCardIndex(this.deck);
-    this.deck[this.selectedCardIndex].isSeleCted = true;
+    this.deckSource.next(
+      produce(this.deck, draftDeck => {
+        draftDeck.forEach(d => d.isSeleCted = false);
+        draftDeck[randomCardIndex(this.deck)].isSeleCted = true
+      })
+    );
   }
 }

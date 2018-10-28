@@ -1,3 +1,11 @@
+
+@keyframes grow
+  0%
+    font-size: 800%
+  100%
+    font-size: 1200%
+
+
 .deck
     top: 60px
     
@@ -5,6 +13,7 @@
   font-family: 'Apple Symbols'
   font-size: 800%
   flex: 1 0 auto
+  
   &-spades
       color: #011627
   &-hearts
@@ -14,7 +23,8 @@
   &-diamonds
       color: #FF9F1C
   &-selected
-      font-size: 1000%
+      animation: 200ms ease grow;
+      font-size: 1200%
       border-color: red;
       border: 1px dashed #cccccc;
 
