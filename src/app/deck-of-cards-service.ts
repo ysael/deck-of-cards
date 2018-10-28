@@ -21,7 +21,6 @@ const makeASuit = (values: Values, suit: string) => values.map(value => makeACar
 const deckReducer = (values: Values) => (d, suit) => [...d, ...makeASuit(values, suit)];
 const createDeck = (suits: Suits, values: Values): Deck => suits.reduce(deckReducer(values), []);
 
-
 const shuffleDeck = d => d
   .map(a => [Math.random(), a])
   .sort((a, b) => a[0] - b[0])
