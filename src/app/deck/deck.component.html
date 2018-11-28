@@ -6,8 +6,8 @@
 >
     <mat-grid-tile
         *ngFor="let card of selectedCards"
+        [ngClass]=""
         class="card {{'card-'+ card.suit}}"
-        [ngClass]="{ 'card-selected': card.isSeleCted }"
     >
         {{ cards[card.suit][card.value] }}
     </mat-grid-tile>
@@ -21,8 +21,8 @@
 >
     <mat-grid-tile
         *ngFor="let card of deck"
+        [ngClass]=""
         class="card {{'card-'+ card.suit}}"
-        [ngClass]="{ 'card-selected': card.isSeleCted }"
     >
         {{ cards[card.suit][card.value] }}
     </mat-grid-tile>
